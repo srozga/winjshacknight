@@ -1,0 +1,13 @@
+c:\users\siz\documents\visual studio 2012\Projects\Hacknight.WinJS.SimplestApp\Hacknight.WinJS.SimplestApp\bin\Debug\resources.pri
+c:\users\siz\documents\visual studio 2012\Projects\Hacknight.WinJS.SimplestApp\Hacknight.WinJS.SimplestApp\bin\Debug\AppxManifest.xml
+c:\users\siz\documents\visual studio 2012\Projects\Hacknight.WinJS.SimplestApp\Hacknight.WinJS.SimplestApp\bin\Debug\Hacknight.WinJS.SimplestApp.build.appxrecipe
+c:\users\siz\documents\visual studio 2012\Projects\Hacknight.WinJS.SimplestApp\Hacknight.WinJS.SimplestApp\bld\Debug\priconfig.xml.intermediate
+c:\users\siz\documents\visual studio 2012\Projects\Hacknight.WinJS.SimplestApp\Hacknight.WinJS.SimplestApp\bld\Debug\layout.resfiles.intermediate
+c:\users\siz\documents\visual studio 2012\Projects\Hacknight.WinJS.SimplestApp\Hacknight.WinJS.SimplestApp\bld\Debug\resources.resfiles.intermediate
+c:\users\siz\documents\visual studio 2012\Projects\Hacknight.WinJS.SimplestApp\Hacknight.WinJS.SimplestApp\bld\Debug\pri.resfiles.intermediate
+c:\users\siz\documents\visual studio 2012\Projects\Hacknight.WinJS.SimplestApp\Hacknight.WinJS.SimplestApp\bld\Debug\priconfig.xml
+c:\users\siz\documents\visual studio 2012\Projects\Hacknight.WinJS.SimplestApp\Hacknight.WinJS.SimplestApp\bld\Debug\layout.resfiles
+c:\users\siz\documents\visual studio 2012\Projects\Hacknight.WinJS.SimplestApp\Hacknight.WinJS.SimplestApp\bld\Debug\resources.resfiles
+c:\users\siz\documents\visual studio 2012\Projects\Hacknight.WinJS.SimplestApp\Hacknight.WinJS.SimplestApp\bld\Debug\pri.resfiles
+c:\users\siz\documents\visual studio 2012\Projects\Hacknight.WinJS.SimplestApp\Hacknight.WinJS.SimplestApp\bld\Debug\LanguageQualifiers.txt
+c:\users\siz\documents\visual studio 2012\Projects\Hacknight.WinJS.SimplestApp\Hacknight.WinJS.SimplestApp\bld\Debug\ProjectArchitectures.txt
