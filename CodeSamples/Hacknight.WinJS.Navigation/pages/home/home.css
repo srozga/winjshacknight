@@ -1,4 +1,8 @@
-﻿.homepage section[role=main] {
+﻿/* Copyright (c) 2013 Szymon Rozga
+ *
+ * See the file LICENSE.txt for copying permission. */
+
+.homepage section[role=main] {
     margin-left: 120px;
     margin-right: 120px;
 }

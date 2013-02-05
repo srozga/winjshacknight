@@ -1,5 +1,7 @@
-﻿// For an introduction to the Navigation template, see the following documentation:
-// http://go.microsoft.com/fwlink/?LinkId=232506
+﻿/* Copyright (c) 2013 Szymon Rozga
+ *
+ * See the file LICENSE.txt for copying permission. */
+
 (function () {
     "use strict";
 

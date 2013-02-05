@@ -1,4 +1,8 @@
-﻿(function () {
+﻿/* Copyright (c) 2013 Szymon Rozga
+ *
+ * See the file LICENSE.txt for copying permission. */
+
+(function () {
     "use strict";
 
     WinJS.UI.Pages.define("/pages/home/home.html", {

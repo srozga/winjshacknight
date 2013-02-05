@@ -1,4 +1,7 @@
-﻿#contenthost {
+﻿/* Copyright (c) 2013 Szymon Rozga
+ *
+ * See the file LICENSE.txt for copying permission. */
+#contenthost {
     height: 100%;
     width: 100%;
 }
