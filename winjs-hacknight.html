@@ -249,8 +249,8 @@ WinJS.Binding.processAll($('body'), vm);
     &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id='listview' data-win-control='WinJS.UI.ListView' 
-                   data-win-options='{itemTemplate:'select('#itemTemplate')'}'&gt;&lt;div&gt;
+&lt;div id="listview" data-win-control="WinJS.UI.ListView"
+                   data-win-options="{itemTemplate:select('#itemTemplate')}"&gt;&lt;div&gt;
 
 var lv = $('#listview')[0].winControl;
 var data = new WinJS.Binding.List([{itemTitle: 'item1'},{itemTitle: 'item2'},{itemTitle: 'item3'}]);

@@ -13,18 +13,31 @@
     <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
     <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
     <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+    <script src="/js/jquery-1.8.2.js"></script>
 
     <!-- Hacknight.WinJS.ListView references -->
     <link href="/css/default.css" rel="stylesheet" />
     <script src="/js/default.js"></script>
 </head>
 <body>
-    <div id="itemTemplate" data-win-control="WinJS.Binding.Template">
-        <div>
-            <h1 data-win-bind="text: itemTitle" />
+    <div id="listLayoutItemTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="listLayoutTemplateContainer">
+            <h1 data-win-bind="innerText: itemTitle"></h1>
         </div>
     </div>
+    
+    <div>
+        <button class="inline" id="toggleListLayout">Toggle List Layout</button>
+        <button class="inline" id="toggleGridLayout">Toggle Grid Layout</button>
+    </div>
+
+    <div id="gridLayoutItemTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="gridLayoutTemplateContainer">
+            <h1 data-win-bind="innerText: itemTitle"></h1>
+        </div>
+    </div>
+
     <div id="listview" data-win-control="WinJS.UI.ListView"
-         data-win-options="{itemTemplate: }"
+                       data-win-options="{ itemTemplate:select('#listLayoutItemTemplate'), layout: { type: WinJS.UI.ListLayout} }"></div>
 </body>
 </html>

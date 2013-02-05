@@ -11,9 +11,62 @@
 
     app.onactivated = function (args) {
         if (args.detail.kind === activation.ActivationKind.launch) {
-            args.setPromise(WinJS.UI.processAll());
+            args.setPromise(WinJS.UI.processAll().then(function () {
+                setupListView();
+                setupToggleButtons();
+            }));
         }
     };
+
+    function setupToggleButtons() {
+        $('#toggleListLayout').click(function () {
+            toggleToListLayout();
+        });
+        $('#toggleGridLayout').click(function () {
+            toggleToGridLayout();
+        });
+    }
+
+    function setupListView() {
+        var lv = $('#listview')[0].winControl;
+        var arr = range(1,100).map(function (i) { return { itemTitle: 'item ' + i }; });
+        var data = new WinJS.Binding.List(arr);
+
+        lv.itemDataSource = data.dataSource;
+
+        lv.itemInvoked = function (itemPromise) {
+            itemPromise.done(function (item) {
+                console.log('item invoked');
+            });
+        };
+
+        lv.selectionChanged = function () {
+            lv.selection.getItems().done(function (items) {
+                console.log('selection changed');
+            });
+        };
+    }
+
+    function range(min, max) {
+        var result = [];
+        for (var i = min; i <= max; i++) {
+            result.push(i);
+        }
+        return result;
+    }
+
+    function toggleToListLayout() {
+        var lv = $('#listview')[0].winControl;
+        lv.itemTemplate = $('#listLayoutItemTemplate')[0];
+        lv.layout = new WinJS.UI.ListLayout();
+    }
+
+    function toggleToGridLayout() {
+        var lv = $('#listview')[0].winControl;
+        lv.itemTemplate = $('#gridLayoutItemTemplate')[0];
+        lv.layout = new WinJS.UI.GridLayout();
+    }
+
 
     app.start();
 })();

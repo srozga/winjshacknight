@@ -5,6 +5,22 @@
 body {
 }
 
+#listview {
+    background-color: darkgreen;
+}
+
+.listLayoutTemplateContainer {
+    height: 100px;
+}
+
+.gridLayoutTemplateContainer {
+    width: 200px;
+}
+
+.inline {
+    display: inline;
+}
+
 @media screen and (-ms-view-state: fullscreen-landscape) {
 }
 
