@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+
+<!--
+/* Copyright (c) 2013 Szymon Rozga
+ *
+ * See the file LICENSE.txt for copying permission. */
+ -->
+
 <html>
 <head>
 	<meta charset="utf-8">
@@ -145,15 +152,13 @@ WinJS.Namespace.define('Rozga.WinJS', {
 var a = Rozga.WinJS.function1(); // value will be 1
 
 var CustomClass = WinJS.Class.define(function() { }, { isCloseToAwesome: function() { return true; }}, staticMember);
+var isAwesome = new CustomClass().isAwesome(); // isAwesome is undefined!
 
 var AwesomeMixin = {
 	isAwesome : function() { return true;}	
 };
-
 WinJS.Class.mix(CustomClass, AwesomeMixin);
-
-var c = new CustomClass();
-var amIAwesome = c.isAwesomer(); // value will be true
+var comeOnAmIAwesomeNow = new CustomClass().isAwesome(); // value is now true
 </pre>
 </section>
 
@@ -170,7 +175,6 @@ var amIAwesome = c.isAwesomer(); // value will be true
 		<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh700921.aspx">Menu</a> / <a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh700879.aspx">MenuCommand</a></li>
 		<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/br211895.aspx">Rating</a></li>
 		<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/br229690.aspx">SemanticZoom</a></li>
-
 	</ul>
 </section>
 
@@ -190,7 +194,6 @@ WinJS.UI.processAll().then(function() {
 	</pre>
 </section>
 
-
 <section class="slide">
 	<h2>WinJS Controls continued</h2>
 	<pre>
@@ -201,10 +204,23 @@ var CustomControl = WinJS.Class.define(
     }, 
     { ... put your instance methods here ... });
 	</pre>
-
 	<ul>
 		<li><a href="http://www.codeproject.com/Articles/469657/How-to-Write-a-WinJS-Custom-Control">Building a custom WinJS control</a></li>
 	</ul>
+</section>
+
+<section class="slide">
+	<h2>Two ways to instantiate WinJS Controls</h2>
+	<pre>
+&lt;div id='element' data-win-control='CustomControl' /&gt;
+var control = $('#element')[0].winControl;
+
+OR
+
+&lt;div id='element' /&gt;
+var control = new CustomControl($('#element'), null);
+	</pre>
+
 </section>
 
 <section class="slide">
@@ -221,6 +237,56 @@ WinJS.Binding.processAll($('body'), vm);
 		<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/br229775.aspx">Binding namespace</a></li>
 		<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/br229846.aspx">WinJS.Binding.processAll()</a></li>
 	</ul>
+</section>
+
+
+<section class="slide">
+	<h2>ListView Control</h2>
+
+	<pre>&lt;div id='itemTemplate' data-win-control='WinJS.Binding.Template'&gt;
+    &lt;div&gt;
+        &lt;h1 data-win-bind='text: itemTitle' /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id='listview' data-win-control='WinJS.UI.ListView' 
+                   data-win-options='{itemTemplate:'select('#itemTemplate')'}'&gt;&lt;div&gt;
+
+var lv = $('#listview')[0].winControl;
+var data = new WinJS.Binding.List([{itemTitle: 'item1'},{itemTitle: 'item2'},{itemTitle: 'item3'}]);
+lv.itemDataSource = data.dataSource;
+lv.itemInvoked = function(itemPromise) { 
+    itemPromise.done(function(item) {
+        // handle item tapped
+    });
+};
+lv.selectionChanged= function() {
+	lv.selection.getItems().done(function(items) {
+        // do something with selected items
+    });
+};</pre>
+</section>
+
+<section class="slide">
+	<h2>ListView continued</h2>
+
+	<p>Very customizable</p>
+	<ul>
+		<li><a href="">WinJS.UI.ListLayout</a> vs <a href="">WinJS.UI.GridLayout</a></li>
+		<li><a href="">Selection (none,single,multi)</a>, <a href="">Swipe Behavior</a>, <a href="">Tap Behavior</a></li>
+		<li>Custom <a href="">IListDataAdapter</a> implementations</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Navigation</h2>
+	<ul>
+		<li>Use the Navigation project template</li>
+		<li>Remember: IN PLACE navigation, JavaScript + CSS are just added into memory, not cleared out of it</li>
+		<li><a href="">WinJS.Navigation</a> !TODOLINK!</li>
+	</ul>
+
+	<pre>WinJS.Navigation.navigate(uri, options);</pre>
 </section>
 
 <!-- End slides. -->
