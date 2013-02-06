@@ -1,7 +1,10 @@
 .deck-container {
-	font-family: "Helvetica Neue", sans-serif;
+	/* font-family: "Helvetica Neue", sans-serif; */
+	font-family: 'Segoe UI';
 	font-size:1.75em;
 	background:#fff;
+
+	$blue: #2C4F9E;
 	
 	.slide {
 		background:#fff;
@@ -11,7 +14,7 @@
 		}
 
 		h2 {
-			color:#c00;
+			color:$blue;
 			border-bottom-color:#ccc;
 		}
 
@@ -20,7 +23,8 @@
 		}
 
 		pre {
-			border-color:#ccc;
+			border-color:#999;
+			font-size: .8em;
 		}
 
 		code {
@@ -46,12 +50,12 @@
 			}
 		}
 
-		::-moz-selection{ background:#c00; color:#fff; }
-		::selection { background:#c00; color:#fff; }
+		::-moz-selection{ background:$blue; color:#fff; }
+		::selection { background:$blue; color:#fff; }
 
 		a {
 			&, &:hover, &:focus, &:active, &:visited {
-				color:#c00;
+				color:$blue;
 				text-decoration:none;
 			}
 

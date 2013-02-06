@@ -1,5 +1,6 @@
 .deck-container {
-  font-family: "Helvetica Neue", sans-serif;
+  /* font-family: "Helvetica Neue", sans-serif; */
+  font-family: 'Segoe UI';
   font-size: 1.75em;
   background: #fff; }
   .deck-container .slide {
@@ -7,12 +8,13 @@
     .deck-container .slide h1 {
       color: #000; }
     .deck-container .slide h2 {
-      color: #c00;
+      color: #2c4f9e;
       border-bottom-color: #ccc; }
     .deck-container .slide h3 {
       color: #888; }
     .deck-container .slide pre {
-      border-color: #ccc; }
+      border-color: #999;
+      font-size: .8em; }
     .deck-container .slide code {
       color: #888; }
     .deck-container .slide blockquote {
@@ -29,13 +31,13 @@
         font-weight: bold;
         color: #888; }
     .deck-container .slide ::-moz-selection {
-      background: #c00;
+      background: #2c4f9e;
       color: #fff; }
     .deck-container .slide ::selection {
-      background: #c00;
+      background: #2c4f9e;
       color: #fff; }
     .deck-container .slide a, .deck-container .slide a:hover, .deck-container .slide a:focus, .deck-container .slide a:active, .deck-container .slide a:visited {
-      color: #c00;
+      color: #2c4f9e;
       text-decoration: none; }
     .deck-container .slide a:hover, .deck-container .slide a:focus {
       text-decoration: underline; }
