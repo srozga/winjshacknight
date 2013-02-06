@@ -144,14 +144,72 @@ var promise = new WinJS.Promise(
 </section>
 
 <section class="slide">
-<h2>WinJS Namespaces, Classes and Mixins</h2>
+	<h2>Further reading on Promises</h2>
+	<ul>
+		<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/br211867.aspx">MSDN docs</a></li>
+		<li><a href="http://wiki.commonjs.org/wiki/Promises">CommonJS Promises</a></li>
+		<li><a href="http://lostechies.com/derickbailey/2012/07/19/want-to-build-win8winjs-apps-you-need-to-understand-promises/">Los Techies: Understanding Promises</a></li>
+	</ul>
+</section>
+
+<section class="slide">
+<h2>Namespaces</h2>
+<pre>
+function(Rozga) {
+    Rozga.myFunction1 = function() { return 1;}
+}(Rozga || {});
+
+function(Rozga) {
+    Rozga.myFunction2 = function() { return 2;}
+}(Rozga || {});
+
+function(Rozga) {
+    Rozga.WinJS = Rozga.WinJS || {};
+    function(WinJS) {
+        WinJS.myFunction3 = function() { return 3;}
+    }(Rozga.WinJS);
+}
+}(Rozga || {});
+
+var one = Rozga.myFunction1(); // value will be 1
+var two = Rozga.myFunction2(); // value will be 2
+var three = Rozga.WinJS.myFunction3(); // value will be 3
+</pre>
+</section>
+
+<section class="slide">
+<h2>WinJS Namespaces</h2>
 <pre>
 WinJS.Namespace.define('Rozga.WinJS', {
-	function1:function() { return 1; }
+    myFunction1:function() { return 1; }
 });
-var a = Rozga.WinJS.function1(); // value will be 1
+WinJS.Namespace.define('Rozga.WinJS', {
+    myFunction2:function() { return 2; }
+});
+var one = Rozga.WinJS.myFunction1(); // value will be 1
+var two = Rozga.WinJS.myFunction2(); // value will be 2
+</pre>
+</section>
 
-var CustomClass = WinJS.Class.define(function() { }, { isCloseToAwesome: function() { return true; }}, staticMember);
+<section class="slide">
+	<h2>Classes</h2>
+<pre>
+var CustomClass = function() {};
+CustomClass.prototype.isCloseToAwesome = function() { return true; };
+
+var instance = new CustomClass();
+instance.isCloseToAwesome(); // evaluates to true
+</pre>
+</section>
+
+
+<section class="slide">
+<h2>WinJS Classes and Mixins</h2>
+<pre>
+var CustomClass = WinJS.Class.define(
+    function() { }, 
+    { isCloseToAwesome: function() { return true; }}, 
+    {});
 var isAwesome = new CustomClass().isAwesome(); // isAwesome is undefined!
 
 var AwesomeMixin = {
@@ -186,7 +244,10 @@ var comeOnAmIAwesomeNow = new CustomClass().isAwesome(); // value is now true
 	</pre>
 
 	<pre>
-WinJS.UI.processAll(); // indicentally, this returns a promise
+WinJS.UI.processAll(); // incidentally, this returns a promise
+or
+WinJS.UI.processAll(document.getElementById('listview'));
+
 
 WinJS.UI.processAll().then(function() { 
     //$('#listview')[0].winControl is an instance of a WinJS.UI.ListView
@@ -213,7 +274,7 @@ var CustomControl = WinJS.Class.define(
 	<h2>Two ways to instantiate WinJS Controls</h2>
 	<pre>
 &lt;div id='element' data-win-control='CustomControl' /&gt;
-var control = $('#element')[0].winControl;
+var control = $('#element')[0].winControl; // after a WinJS.UI.processAll() call
 
 OR
 
@@ -251,7 +312,8 @@ WinJS.Binding.processAll($('body'), vm);
 
 &lt;div id="listview" data-win-control="WinJS.UI.ListView"
                    data-win-options="{itemTemplate:select('#itemTemplate')}"&gt;&lt;div&gt;
-
+</pre>
+<pre>
 var lv = $('#listview')[0].winControl;
 var data = new WinJS.Binding.List([{itemTitle: 'item1'},{itemTitle: 'item2'},{itemTitle: 'item3'}]);
 lv.itemDataSource = data.dataSource;
@@ -272,23 +334,76 @@ lv.selectionChanged= function() {
 
 	<p>Very customizable</p>
 	<ul>
-		<li><a href="">WinJS.UI.ListLayout</a> vs <a href="">WinJS.UI.GridLayout</a></li>
-		<li><a href="">Selection (none,single,multi)</a>, <a href="">Swipe Behavior</a>, <a href="">Tap Behavior</a></li>
-		<li>Custom <a href="">IListDataAdapter</a> implementations</li>
+		<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/br211792.aspx">WinJS.UI.ListLayout</a> vs <a href="http://msdn.microsoft.com/en-us/library/windows/apps/br211751.aspx">WinJS.UI.GridLayout</a></li>
+		<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/br211851.aspx">Selection (none,single,multi)</a>, <a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh700730.aspx">Swipe Behavior</a>, <a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh700733.aspx">Tap Behavior</a></li>
+		<li>Custom <a href="http://msdn.microsoft.com/en-us/library/windows/apps/br212603.aspx">IListDataAdapter</a> implementations</li>
 	</ul>
 </section>
 
 <section class="slide">
-	<h2>Navigation</h2>
+	<h2>Page Navigation</h2>
 	<ul>
 		<li>Use the Navigation project template</li>
 		<li>Remember: IN PLACE navigation, JavaScript + CSS are just added into memory, not cleared out of it</li>
-		<li><a href="">WinJS.Navigation</a> !TODOLINK!</li>
+		<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/br229778.aspx">WinJS.Navigation</a></li>
 	</ul>
 
-	<pre>WinJS.Navigation.navigate(uri, options);</pre>
+	<pre>
+WinJS.Navigation.navigate(uri, options);
+
+&lt;div id="contenthost" data-win-control="Application.PageControlNavigator" 
+     data-win-options="{home: '/pages/home/home.html'}"&gt;&lt;/div&gt;
+	</pre>
 </section>
 
+<section class="slide">
+	<h2>Page Navigation Continued</h2>
+<pre>
+(function () {
+    "use strict";
+
+    WinJS.UI.Pages.define("/pages/home/home.html", {
+        ready: function (element, options) {
+        }
+    });
+})();
+</pre>
+</section>
+
+<section class="slide">
+	<h2>Integrating with Windows 8</h2>
+
+	<ul>
+		<li>Search: <a href="http://msdn.microsoft.com/en-us/library/windows/apps/br225085.aspx">SearchPane.getForCurrentView()</a></li>
+		<li>Share: <a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.applicationmodel.datatransfer.datatransfermanager.getforcurrentview">DataTransferManager.getForCurrentView()</a></li>
+		<li>Settings: <a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.applicationsettings.settingspane.getforcurrentview">SettingsPane.getForCurrentView()</a></li>
+		<li>Live Tiles: <a href="http://code.msdn.microsoft.com/windowsapps/app-tiles-and-badges-sample-5fc49148">Tile and Badge Sample</a>, <a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx">Tile Template Catalog</a>, <a href="http://volaresystems.com/Blog/post/2012/10/15/Building-a-Windows-8-Live-Tile-with-JavaScript.aspx">Building a Windows 8 Live Tile with JavaScript</a></li>
+	</ul>
+
+</section>
+
+<section class="slide">
+	<h2>Other Stuff</h2>
+
+	<ul>
+		<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/br229787.aspx">WinJS.xhr</a></li>
+		<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/jj150612.aspx">WinJS.log</a> (you should implement it)</li>
+		<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/br229783.aspx">WinJS.Utilities</a><br/>DOM utilities like getting elements by class and id, position and size helpers, etc</li>
+	</ul>
+</section>
+
+<section class="slide">
+<h2>Futher Reading</h2>
+<ul>
+	<li><a href="http://code.msdn.microsoft.com/windowsapps/Windows-8-Modern-Style-App-Samples">All Windows 8 App Store Samples (250+)</a></li>
+	<li><a href="http://design.windows.com">Windows 8 Design Guidance</a></li>
+	<li><a href="http://hilojs.codeplex.com/">HiloJS</a>: a reference implementation of a photo viewing and cropping app by the Microsoft Patterns & Practices team.</li>
+</ul>
+</section>
+
+<section class="slide">
+	<h1>Questions? Comments?</h1>
+</section>
 <!-- End slides. -->
 
 
