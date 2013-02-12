@@ -34,15 +34,15 @@
 
         lv.itemDataSource = data.dataSource;
 
-        lv.itemInvoked = function (itemPromise) {
-            itemPromise.done(function (item) {
-                console.log('item invoked');
+        lv.oniteminvoked = function (ev) {
+            ev.detail.itemPromise.done(function (item) {
+                $('#selectionOrInvokeMessage').text(item.data.itemTitle + ' invoked');
             });
         };
 
-        lv.selectionChanged = function () {
+        lv.onselectionchanged = function () {
             lv.selection.getItems().done(function (items) {
-                console.log('selection changed');
+                $('#selectionOrInvokeMessage').text(items.length + ' items selected');
             });
         };
     }

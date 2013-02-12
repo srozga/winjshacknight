@@ -107,6 +107,7 @@
 		<li>JavaScript single threaded, but can still write asynchronous code using <a href="http://msdn.microsoft.com/en-us/library/windows/apps/br211867.aspx">WinJS.Promise</a></li>
 		<li>Object that represents the result of an asychronous action</li>
 		<li>Follows the <a href="http://wiki.commonjs.org/wiki/Promises">Promises CommonJS spec</a></li>
+		<li>Think Task&lt;T&gt;</li>
 	</ul>
 </section>
 <section class="slide">
@@ -317,8 +318,8 @@ WinJS.Binding.processAll($('body'), vm);
 var lv = $('#listview')[0].winControl;
 var data = new WinJS.Binding.List([{itemTitle: 'item1'},{itemTitle: 'item2'},{itemTitle: 'item3'}]);
 lv.itemDataSource = data.dataSource;
-lv.itemInvoked = function(itemPromise) { 
-    itemPromise.done(function(item) {
+lv.itemInvoked = function(ev) { 
+    ev.detail.itemPromise.done(function(item) {
         // handle item tapped
     });
 };

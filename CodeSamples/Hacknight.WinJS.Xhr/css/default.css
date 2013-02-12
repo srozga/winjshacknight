@@ -1,0 +1,25 @@
+﻿/* Copyright (c) 2013 Szymon Rozga
+ *
+ * See the file LICENSE.txt for copying permission. */
+body {
+
+}
+
+#result {
+    width: 800px;
+    height: 600px;
+}
+#url { width: 800px;}
+
+
+@media screen and (-ms-view-state: fullscreen-landscape) {
+}
+
+@media screen and (-ms-view-state: filled) {
+}
+
+@media screen and (-ms-view-state: snapped) {
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+}
