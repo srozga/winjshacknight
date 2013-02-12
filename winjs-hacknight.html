@@ -399,6 +399,7 @@ WinJS.Navigation.navigate(uri, options);
 		<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/br229787.aspx">WinJS.xhr</a></li>
 		<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/jj150612.aspx">WinJS.log</a> (you should implement it)</li>
 		<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/br229783.aspx">WinJS.Utilities</a><br/>DOM utilities like getting elements by class and id, position and size helpers, etc</li>
+		<li>Settings! <a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.storage.applicationdata.roamingsettings">Roaming Settings (up to 4K in size, 64K for composite)</a>, <a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.storage.applicationdata.localsettings.aspx">Local Settings</a>, <a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.storage.applicationdata.temporaryfolder.aspx">Temporary Folder</a>. All below to the <a href="http://msdn.microsoft.com/en-us/library/windows/apps/br241587.aspx">Application Data</a> class.</li>
 	</ul>
 </section>
 
@@ -409,6 +410,20 @@ WinJS.Navigation.navigate(uri, options);
 	<li><a href="http://design.windows.com">Windows 8 Design Guidance</a></li>
 	<li><a href="http://hilojs.codeplex.com/">HiloJS</a>: a reference implementation of a photo viewing and cropping app by the Microsoft Patterns & Practices team.</li>
 </ul>
+</section>
+
+<section class="slide">
+<h2>Practice App</h2>
+<p>Use the Yahoo Finance YQL API to create an app in WinJS that allows the user to:</p>
+<ol>
+	<li>Allow users to create a watch list view - use WinJS.UI.ListView</li>
+	<li>Retrieve symbol quotes using WinJS.xhr – sample url: http://finance.yahoo.com/d/quotes.csv?s=AAPL+GOOG+MSFT&f=snl1d1t1c1hgw</li>
+	<li>Create detailed view page of the quote - use WinJS.UI.Pages and WinJS.Navigation</li>
+	<li>Integrate into the search charm and allow users to search for quotes - SearchPane and Search App Activation</li>
+	<li>Save watch list to roaming storage - Settings/Roaming Settings</li>
+	<li>Integrate into share charm - share link to http://finance.yahoo.com/q?s=SYMBOLNAME - Share Charm</li>
+	<li>Push data to live tile</li>
+	<li>Show price history in chart. Use <a href="http://www.highcharts.com/products/highstock">HighCharts</a>. Get data from here: use "http://ichart.finance.yahoo.com/table.csv?s=" + symbol</li>
 </section>
 
 <section class="slide">
